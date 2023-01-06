@@ -1,9 +1,9 @@
 import { DataTypes, Model } from 'sequelize';
 
-import { sequelize } from '../../connection';
-import { ICategory } from './category.interface';
+import { sequelize } from '../../../../database/connection';
+import { ISpecification } from '../interfaces/specification.interface';
 
-class Category extends Model implements ICategory {
+class Specification extends Model implements ISpecification {
   declare id: string;
   declare name: string;
   declare description: string;
@@ -11,17 +11,8 @@ class Category extends Model implements ICategory {
   declare readonly createdAt: Date;
 }
 
-Category.init(
+Specification.init(
   {
-    name: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      unique: true,
-    },
-    description: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
     id: {
       type: DataTypes.UUID,
       primaryKey: true,
@@ -31,6 +22,15 @@ Category.init(
         isUUID: 4,
         notNull: true,
       },
+    },
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true,
+    },
+    description: {
+      type: DataTypes.STRING,
+      allowNull: false,
     },
     createdAt: {
       type: DataTypes.DATE,
@@ -45,11 +45,11 @@ Category.init(
   },
   {
     sequelize,
-    modelName: 'Category',
-    tableName: 'categories',
+    modelName: 'Specification',
+    tableName: 'specifications',
   },
 );
 
-Category.sync(process.env.ENV === 'dev' ? { alter: true } : undefined);
+Specification.sync(process.env.ENV === 'dev' ? { alter: true } : undefined);
 
-export { Category };
+export { Specification };

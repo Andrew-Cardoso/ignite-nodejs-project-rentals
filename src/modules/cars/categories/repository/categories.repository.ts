@@ -1,11 +1,10 @@
 // import { Op } from 'sequelize';
 import { WhereOptions } from 'sequelize';
 
-import { isNullOrEmpty } from '../../../utils/is-null-or-empty';
-import { Category } from './categories.model';
-import { ICategory } from './category.interface';
-
-type CreateCategory = Omit<ICategory, 'id' | 'createdAt'>;
+import { IRepository } from '../../../_interfaces/repository.interface';
+import { isNullOrEmpty } from '../../../../utils/is-null-or-empty';
+import { ICategory } from '../interfaces/category.interface';
+import { Category } from '../model/categories.model';
 
 const buildWhere = (where?: Partial<ICategory>) => {
   const whereOptions: WhereOptions<Category> = {};
@@ -23,11 +22,12 @@ const buildWhere = (where?: Partial<ICategory>) => {
   return whereOptions;
 };
 
-export const categoriesRepository = {
-  create: ({ description, name }: CreateCategory) =>
+export const categoriesRepository: IRepository<ICategory> = {
+  create: ({ description, name }) =>
     Category.create({
       name,
       description,
     }),
   findAll: (where?: Partial<ICategory>) => Category.findAll({ where: buildWhere(where) }),
+  findByName: (name: string): Promise<ICategory | null> => Category.findOne({ where: { name } }),
 };

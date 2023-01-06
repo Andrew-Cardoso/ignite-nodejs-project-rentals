@@ -7,13 +7,13 @@ import * as dotenv from 'dotenv';
 dotenv.config();
 
 import * as express from 'express';
-import { categoriesRouter } from './routes/categories.routes';
+import { routes } from './routes';
 
 const app = express();
 
 app.use(express.json());
 
-app.use('/categories', categoriesRouter);
+app.use(routes);
 
 const port = process.env.PORT;
 app.listen(port, () => console.log('Server started on port %d!', port));
