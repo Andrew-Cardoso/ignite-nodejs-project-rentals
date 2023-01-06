@@ -1,4 +1,4 @@
-import { IFindAllService } from '../../../../services/_interfaces/find-all-service.interface';
+import { IFindAllService } from '../../../_interfaces/find-all-service.interface';
 import { errorHandler } from '../../../../utils/error-handler';
 import { ICategory } from '../interfaces/category.interface';
 

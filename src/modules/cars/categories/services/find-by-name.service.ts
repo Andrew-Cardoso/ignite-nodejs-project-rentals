@@ -1,4 +1,4 @@
-import { IFindByNameService } from '../../../../services/_interfaces/find-by-name-service.interface';
+import { IFindByNameService } from '../../../_interfaces/find-by-name-service.interface';
 import { errorHandler } from '../../../../utils/error-handler';
 import { ICategory } from '../interfaces/category.interface';
 

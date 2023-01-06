@@ -1,4 +1,4 @@
-import { ICreateService } from '../../../../services/_interfaces/create-service.interface';
+import { ICreateService } from '../../../_interfaces/create-service.interface';
 import { errorHandler } from '../../../../utils/error-handler';
 import { ICategory } from '../interfaces/category.interface';
 

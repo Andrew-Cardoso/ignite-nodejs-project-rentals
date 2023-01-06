@@ -1,7 +1,7 @@
 import { Response } from 'express';
 
-import { ICreateEntity } from '../../modules/_interfaces/create-entity.interface';
-import { IRepository } from '../../modules/_interfaces/repository.interface';
+import { ICreateEntity } from './create-entity.interface';
+import { IRepository } from './repository.interface';
 
 export type ICreateService<T> = (
   repo: IRepository<T>,
